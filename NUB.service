@@ -1,0 +1,13 @@
+[Unit]
+Description=NUB control software
+After=network.target
+
+[Service]
+User=pi
+Restart=no
+Type=simple
+WorkingDirectory=/home/pi
+ExecStart=/usr/bin/python3 NUB_websock_server.py
+
+[Install]
+WantedBy=multi-user.target

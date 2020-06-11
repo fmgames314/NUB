@@ -1,0 +1,50 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- meta content -->
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <!-- title -->
+  <title>NUB Web Controller</title>
+  <!-- stylesheet -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <h1>NUB Controller</h1>
+
+  <table>
+    <tr>
+      <th><img id="cameraStreamImg"></th>
+      <script>
+        document.getElementById("cameraStreamImg").src="http://"+document.domain+"/html/cam_pic_new.php" 
+      </script>
+      <th id="sensorValuesSection">
+        <div id="sensorDIV">Voltage: <span id="sensor_voltage"></span></div>
+        <div id="sensorDIV">CPU Temperature: <span id="sensor_cpu_tempeature"></span>°C</div>
+        <p id="NUB_front"><img src="front.png"></p>
+        <p id="NUB_side"><img src="side.png"></p>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <p id="gamePadStatusText">Javascript hasn't loaded yet</p>
+        <input id="CalibrateButton" type="submit" value="Calibrate Controller">
+        <p id="CalibrationState">...</p>
+      </th>
+    </tr>
+  
+  <table>
+
+  <!--load scripts at end of page to load HTML first -->
+  <script src="jquery.min.js"></script>
+  <script src="socket.io.min.js"></script>
+  <script src="gamepadBackground.js"></script> 
+  <script src="websocket_client.js"></script> 
+</body>
+
+
+
+</html>

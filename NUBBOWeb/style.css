@@ -1,0 +1,30 @@
+td,
+th {
+  text-align: left;
+  padding: 5px;
+  background-color: rgb(230, 230, 230);
+  border: 1px solid rgb(53, 34, 34);
+  border-radius: 5px;
+}
+
+table{
+  border-spacing: 0px;
+}
+
+th {
+  font-weight: bold;
+}
+
+#NUB_front{
+    padding: 50px;
+    
+}
+#NUB_side{
+    padding: 50px;
+}
+
+#sensorValuesSection{
+    width: 300px;
+    text-align: left;
+    vertical-align: top;
+}
