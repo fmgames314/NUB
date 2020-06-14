@@ -28,3 +28,8 @@ th {
     text-align: left;
     vertical-align: top;
 }
+
+#htmlListOfConCals{
+  border-style: solid;
+  padding: 10px;
+}

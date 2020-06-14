@@ -210,6 +210,7 @@ async def driveTheRobot(sta):
 async def sendDataToWebsocket(websocket):
     try:
         json_data = {}
+        json_data["event"] = "displayData"
         json_data["temp"] = getState()["cpuTemp"]
         json_data["volt"] = getState()["voltage"]
         json_data["xa"] = 360-(getState()["x_angle"])
@@ -231,6 +232,24 @@ async def consumer_handler(websocket: WebSocketServerProtocol):
                     tempState = getState()
                     tempState["controller"] = controllerData
                     await driveTheRobot(getState())
+                if packet["event"] == "saveController": # Save a controller Cal
+                    fileName = packet["controllerName"]
+                    dataForfile = message
+                    with open("conCal_"+str(fileName)+'.json', 'w') as json_file:
+                        json.dump(dataForfile, json_file)
+                if packet["event"] == "getController": # got controller data               
+                    for file in os.listdir("./"):
+                         filename = os.fsdecode(file)
+                         if filename.endswith(".json"): 
+                            with open(filename) as json_file:
+                                json_data_str = json.load(json_file)
+                                json_data = json.loads(json_data_str)
+                                json_data["event"] = "controllerCals"
+                                json_out = json.dumps(json_data)
+                                await websocket.send(str(json_out))
+                         else:
+                             continue
+
             except Exception as e:
                 print("error with consumer" + str(e))
         except:

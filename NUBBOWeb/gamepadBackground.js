@@ -199,7 +199,7 @@ function detectAxisMovment(gamepadData,whatPad){
     for (var j = 0; j < axes.length; j++) {
         var ax = axes[j]
         var diff = ax-axesZeroVals[j];
-        if(Math.abs(diff) > .05){ // probable change detected
+        if(Math.abs(diff) > .2){ // probable change detected
             if(Math.abs(diff-lastDiff) < .01){ // stable?
                 return [j,diff];
             }
