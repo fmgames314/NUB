@@ -16,6 +16,8 @@ from gpiozero import CPUTemperature
 import copy
 # python files
 import IMU
+from urllib.request import urlopen
+
 
 # global variables
 cpu = CPUTemperature()
@@ -182,6 +184,10 @@ async def driveTheRobot(sta):
                 # Lights with Triangle button
                 if gamepad["Triangle"] == 1 and gamepad_last["Triangle"] == 0:
                     await toggleLED(fmPacker,sta)
+                # take picture with circle
+                if gamepad["Circle"] == 1 and gamepad_last["Circle"] == 0:
+                    contents = urlopen("http://127.0.0.1/html/cmd_pipe.php?cmd=im").read()
+               
                 # check L1 button
                 if gamepad["L1"] == 1: #L1 pressed, drive SERVOS with joysticks
                     print(lAxis_H,rAxis_H)

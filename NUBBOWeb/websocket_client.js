@@ -44,6 +44,10 @@ function processWebsocketData(data) {
           var buttons = jsonData["buttonMapping"];
           var joys = jsonData["axesMapping"];
           listOfSavedCalData[conName] = {buttons,joys}
+          // just load ps3 by default since that's prob what I be using
+          if(conName == "ps3Controller"){
+            setControllerCal(this,conName)
+          }
           // console.log(listOfSavedCalData)
       }
       
